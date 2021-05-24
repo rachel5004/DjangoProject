@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style type="text/css">
+    .row{
+      width:700px;
+      margin:0px auto
+    }
+    h3{
+      text-align:center;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h3>상세 보기</h3>
+        <table class="table">
+          <tr>
+            <th class="text-right">번호</th>
+            <th>{{object.id}}</th>
+          </tr>
+          <tr>
+            <th class="text-right">작성자</th>
+            <th>{{object.name}}</th>
+          </tr>
+          <tr>
+            <th class="text-right">제목</th>
+            <th>{{object.subject}}</th>
+          </tr>
+          <tr>
+            <th class="text-right">내용</th>
+            <th>{{object.content}}</th>
+          </tr>
+          <tr>
+            <th class="text-right">등록일</th>
+            <th>{{object.regdate|date:"Y-m-d"}}</th>
+          </tr>
+          <tr>
+            <td class="text-right" colspan="2">
+              <a href="{% url 'list'%}" class="btn btn-sm btn-danger">목록</a>
+            </td>
+          </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
