@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style type="text/css">
+        .row{
+           margin:0px auto;
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="col-md-2">
+              <div class="thumbnail">
+                <a href="../recipe_detail?no={{r.no}}">
+                  <img src={{r.poster}} alt="Lights" style="width:100%">
+                  <div class="caption">
+                      <p>{{r.title|truncatewords:15}}</p>
+                      <sub>{{r.chef}}</sub>
+                  </div>
+                </a>
+              </div>
+            </div>-->
+        <div style="height:50px"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <h3>믿고 보는 맛집 리스트</h3>
+            </div>
+            <hr>
+            <div class="row">
+               {% for r  in cate_list1 %}
+                <div class="col-md-3">
+                  <div class="thumbnail">
+                    <a href="#">
+                      <img src={{r.poster}} alt="Lights" style="width:100%">
+                      <div class="caption">
+                          <p>{{r.title}}</p>
+                          <sub style="font-size:7px">{{r.subject}}</sub>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <h3>지역별 인기 맛집</h3>
+            </div>
+            <hr>
+            <div class="row">
+               {% for r  in cate_list2 %}
+                <div class="col-md-3">
+                  <div class="thumbnail">
+                    <a href="#">
+                      <img src={{r.poster}} alt="Lights" style="width:100%">
+                      <div class="caption">
+                          <p>{{r.title}}</p>
+                          <sub style="font-size:7px">{{r.subject}}</sub>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="row">
+                <h3>메뉴별 인기 맛집</h3>
+            </div>
+            <hr>
+            <div class="row">
+               {% for r  in cate_list3 %}
+                <div class="col-md-3">
+                  <div class="thumbnail">
+                    <a href="#">
+                      <img src={{r.poster}} alt="Lights" style="width:100%">
+                      <div class="caption">
+                          <p>{{r.title}}</p>
+                          <sub style="font-size:7px">{{r.subject}}</sub>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+</body>
+</html>

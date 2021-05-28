@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+   <div style="height:30px"></div>
+   <div class="container">
+       <div class="row">
+         <div class="col-md-4" v-for="vo in recipe">
+            <div class="thumbnail">
+                <img :src="vo.poster" alt="Lights" style="width:100%">
+                <div class="caption">
+                  <p>{{vo.title}}</p>
+                </div>
+            </div>
+          </div>
+       </div>
+   </div>
+   <script>
+     new Vue({
+        el:'.container',
+        data:{
+          recipe:[]
+        },
+        mounted:function(){
+           axios.get('http://211.238.142.181/web/recipe/recipe_list.do').then(response=>{
+               this.recipe=response.data
+               console.log(this.recipe)
+           })
+        }
+     })
+   </script>
+</body>
+</html>

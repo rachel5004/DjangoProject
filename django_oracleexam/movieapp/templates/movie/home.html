@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style type="text/css">
+        .row{
+          margin:0px auto
+        }
+    </style>
+</head>
+<body>
+   <div style="height:30px"></div>
+   <div class="container">
+       <div class="row">
+           {% for m in list %}
+           <div class="col-md-3">
+              <div class="thumbnail">
+                  <img src={{m.poster}} alt="Lights" style="width:100%">
+                  <div class="caption">
+                      <p>{{m.title}}</p>
+                      <p>{{m.genre}}</p>
+                      <p>{{m.grade}}</p>
+                  </div>
+              </div>
+            </div>
+           {% endfor %}
+       </div>
+   </div>
+</body>
+</html>
