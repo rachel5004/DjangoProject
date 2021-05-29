@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        .row {
+            margin:0px auto;
+        }
+    </style>
+</head>
+<body>
+     {% include 'total/menu.html' %}
+     <div style="height:30px"></div>
+     <div class="container">
+         <div class="row">
+             <h3>&lt;{{chef}}&gt; 쉐프가 만든 레시피는 총 <span style="font-size:25px;color:red">{{count}}</span>개의 있습니다.</h3>
+         </div>
+         <hr>
+         <div class="row">
+             {% for recipe in rd %}
+              <div class="col-md-3">
+                <div class="panel panel-success">
+                  <div class="panel-heading"><a href="../recipe_detail/?no={{recipe.no}}">{{recipe.title|slice:":17"}}</a></div>
+                  <div class="panel-body">
+                       <div class="thumbnail">
+                          <a href="../recipe_detail/?no={{recipe.no}}">
+                            <img src="{{recipe.poster}}" title="{{recipe.chef}}" style="width:100%">
+                          </a>
+                        </div>
+                  </div>
+                </div>
+              </div>
+             {% endfor %}
+         </div>
+         <div class="row">
+             <div class="text-center">
+                 <ul class="pagination">
+                     {% if startPage > 1 %}
+                     <li><a href="/total/chef/?chef={{chef}}&page={{startPage|add:-1}}">&lt;</a></li>
+                     {% endif %}
+                     {% for i in range %}
+                     {% if i == curpage %}
+                     <li class="active"><a href="/total/chef/?chef={{chef}}&page={{i}}">{{i}}</a></li>
+                     {% else %}
+                     <li><a href="/total/chef/?chef={{chef}}&page={{i}}">{{i}}</a></li>
+                     {% endif %}
+                     {% endfor %}
+                     {% if endPage < totalpage %}
+                     <li><a href="/total/chef/?chef={{chef}}&page={{endPage|add:1}}">&gt;</a></li>
+                     {% endif %}
+                </ul>
+             </div>
+         </div>
+     </div>
+</body>
+</html>
