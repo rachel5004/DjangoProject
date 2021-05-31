@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style type="text/css">
+        .row{
+           margin:0px auto;
+           width:1000px;
+        }
+        h1{
+           text-align:center
+        }
+    </style>
+</head>
+<body>
+     <div style="height:50px"></div>
+     <div class="container">
+         <div class="row">
+             <h1>공지사항</h1>
+             <table class="table">
+                 <tr>
+                     <td>
+                         <a href="#" class="btn btn-sm btn-success">새글</a>
+                     </td>
+                 </tr>
+             </table>
+             <div style="height:500px">
+             <table class="table table-striped">
+                 <tr class="success">
+                     <th class="text-center" width="10%">번호</th>
+                     <th class="text-center" width="45%">제목</th>
+                     <th class="text-center" width="15%">이름</th>
+                     <th class="text-center" width="20%">작성일</th>
+                     <th class="text-center" width="10%">조회수</th>
+                 </tr>
+                 {% for row in object_list %}
+                 <tr>
+                     <td class="text-center" width="10%">{{forloop.counter}}</td>
+                     <td width="45%">
+                         <a href="detail/?no={{row.no}}">{{row.subject}}</a>
+                     </td>
+                     <td class="text-center" width="15%">{{row.name}}</td>
+                     <td class="text-center" width="20%">{{row.regdate|date:'Y-m-d'}}</td>
+                     <td class="text-center" width="10%">{{row.hit}}</td>
+                 </tr>
+                 {% endfor %}
+             </table>
+             </div>
+         </div>
+     </div>
+</body>
+</html>
