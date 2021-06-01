@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+        .row {
+           margin:0px auto;
+           width:800px
+        }
+        h1{
+          text-align:center
+        }
+    </style>
+</head>
+<body>
+    <div style="height:50px"></div>
+    <div class="container">
+        <h1>MariaDB 게시판(상세보기)</h1>
+        <div class="row">
+          <form method="post" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-sm btn-danger" value="수정">
+                           <input type="button" class="btn btn-sm btn-primary" value="취소"
+                                  onclick="javascript:history.back()">
+          </form>
+        </div>
+    </div>
+</body>
+</html>

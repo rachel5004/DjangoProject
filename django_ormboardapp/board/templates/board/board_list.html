@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style type="text/css">
+        .row {
+           margin:0px auto;
+           width:800px
+        }
+        h1{
+          text-align:center
+        }
+    </style>
+</head>
+<body>
+    <div style="height:50px"></div>
+    <div class="container">
+        <h1>MariaDB 게시판(장고:ORM)</h1>
+        <div class="row">
+            <table class="table">
+                <tr>
+                    <td>
+                        <a href="{% url 'insert' %}" class="btn btn-sm btn-primary">새글</a>
+                    </td>
+                </tr>
+            </table>
+            <table class="table table-striped">
+                <tr class="success">
+                    <th class="text-center" width="10%">번호</th>
+                    <th class="text-center" width="45%">제목</th>
+                    <th class="text-center" width="15%">이름</th>
+                    <th class="text-center" width="20%">작성일</th>
+                    <th class="text-center" width="10%">조회수</th>
+                </tr>
+                {% for board in object_list %}
+                <tr>
+                    <td class="text-center" width="10%">{{board.id}}</td>
+                    <td class="text-left" width="45%"><a href="{% url 'detail' pk=board.id%}">{{board.subject}}</a></td>
+                    <td class="text-center" width="15%">{{board.name}}</td>
+                    <td class="text-center" width="20%">{{board.regdate|date:'Y-m-d'}}</td>
+                    <td class="text-center" width="10%">{{board.hit}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="row">
+            <div class="text-center">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                    <li class="page-item"><a href="{% url 'list' %}"?page="{{page_obj.previous_page_number}}">&lt;</a></li>
+                    {% else %}
+                      <li class="page-item disabled"><a href="#">&lt;</a></li>
+                    {% endif %}
+                    {%  for object in page_obj.paginator.page_range %}
+                     <li><a href="{{request.path}}?page={{forloop.counter}}">{{forloop.counter}}</a></li>
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                    <li><a href="{% url 'list' %}"?page="{{page_obj.next_page_number}}">&gt;</a></li>
+                     {% else %}
+                      <li class="page-item disabled"><a href="#">&gt;</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
