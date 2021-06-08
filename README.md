@@ -1,0 +1,2 @@
+# DjangoProject🔫
+Django basic
